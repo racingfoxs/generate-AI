@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { generateText, generateImage, textToSpeech } from './apiService';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,14 +17,29 @@ export default function Home() {
     const [generatedAudio, setGeneratedAudio] = useState('');
     const [requestLogs, setRequestLogs] = useState([]);
     const [loading, setLoading] = useState(false);
-
     const { toast } = useToast();
 
+
+    useEffect(() => {
+        const savedLogs = JSON.parse(localStorage.getItem('requestLogs')) || [];
+        setRequestLogs(savedLogs);
+    }, []);
+
+
     const logRequest = (type, status) => {
-        setRequestLogs((prevLogs) => [
-            ...prevLogs,
-            { type, status, time: new Date().toLocaleTimeString() },
-        ]);
+        const newLog = {
+            type,
+            status,
+            time: new Date().toLocaleTimeString(),
+            date: new Date().toLocaleDateString(),
+        };
+
+        setRequestLogs((prevLogs) => {
+            const updatedLogs = [...prevLogs, newLog];
+            localStorage.setItem('requestLogs', JSON.stringify(updatedLogs));
+            return updatedLogs;
+        });
+
     };
 
     const handleGenerateText = async () => {
@@ -96,9 +111,9 @@ export default function Home() {
                             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                             Generate Image
                         </Button>
-                        <Button className="w-full" onClick={handleGenerateAudio} disabled={!apiKey || loading}>
+                        <Button className="w-full" onClick={handleGenerateAudio} disabled={!apiKey || loading || true}>
                             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                            Generate Audio
+                            Generate Audio <span className='text-[10px] pl-1'>(premium)</span>
                         </Button>
                     </div>
                 </CardContent>
@@ -139,9 +154,9 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                     <ul>
-                        {requestLogs.map((log, index) => (
+                        {[...requestLogs].reverse().map((log, index) => (
                             <li key={index}>
-                                {log.time} - {log.type}: {log.status}
+                                {log.date} {log.time} - {log.type} - {log.status}
                             </li>
                         ))}
                     </ul>
