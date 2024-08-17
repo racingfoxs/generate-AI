@@ -8,7 +8,6 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { Loader2 } from 'lucide-react';
-import { TypingEffect } from './TypingEffect';
 import TypewriterComponent from 'typewriter-effect';
 
 export default function Home() {
