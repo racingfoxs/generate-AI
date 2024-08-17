@@ -75,27 +75,6 @@ export default function Home() {
 
     return (
         <div className="p-6 max-w-7xl mx-auto">
-            {/* API Key Input */}
-            <Card className="mb-6">
-                <CardHeader>
-                    <CardTitle>API Key Configuration</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <Input
-                        type="text"
-                        placeholder="Enter your API key"
-                        value={apiKey}
-                        onChange={(e) => setApiKey(e.target.value)}
-                        className="mb-4"
-                    />
-                    {apiKey && (
-                        <p className="text-sm text-gray-600">
-                            <strong>Current API Key:</strong> {apiKey}
-                        </p>
-                    )}
-                </CardContent>
-            </Card>
-
             <Card className="mb-6">
                 <CardHeader>
                     <CardTitle>Generate Content</CardTitle>
@@ -125,7 +104,6 @@ export default function Home() {
                 </CardContent>
             </Card>
 
-            {/* Display Generated Content */}
             {generatedText && (
                 <Card className="mb-6">
                     <CardHeader>
@@ -154,8 +132,7 @@ export default function Home() {
                     </CardContent>
                 </Card>
             )}
-
-            {/* Request Logs */}
+=
             <Card>
                 <CardHeader>
                     <CardTitle>Request Logs</CardTitle>
@@ -171,7 +148,25 @@ export default function Home() {
                 </CardContent>
             </Card>
 
-            {/* Toast Notifications */}
+            <Card className="mb-6">
+                <CardHeader>
+                    <CardTitle>API Key Configuration</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Input
+                        type="text"
+                        placeholder="Enter your API key"
+                        value={apiKey}
+                        onChange={(e) => setApiKey(e.target.value)}
+                        className="mb-4"
+                    />
+                    {apiKey && (
+                        <p className="text-sm text-gray-600">
+                            <strong>Current API Key:</strong> {apiKey}
+                        </p>
+                    )}
+                </CardContent>
+            </Card>
             <Toaster position="top-right" />
         </div>
     );
