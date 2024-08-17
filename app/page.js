@@ -108,16 +108,16 @@ export default function Home() {
                         onChange={(e) => setInput(e.target.value)}
                         className="mb-4"
                     />
-                    <div className="flex space-x-4">
-                        <Button onClick={handleGenerateText} disabled={!apiKey || loading}>
+                    <div className="flex justify-center items-center gap-4 flex-col sm:flex-row flex-1">
+                        <Button className="w-full" onClick={handleGenerateText} disabled={!apiKey || loading}>
                             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                             Generate Text
                         </Button>
-                        <Button onClick={handleGenerateImage} disabled={!apiKey || loading}>
+                        <Button  className="w-full" onClick={handleGenerateImage} disabled={!apiKey || loading}>
                             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                             Generate Image
                         </Button>
-                        <Button onClick={handleGenerateAudio} disabled={!apiKey || loading}>
+                        <Button  className="w-full" onClick={handleGenerateAudio} disabled={!apiKey || loading}>
                             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                             Generate Audio
                         </Button>
