@@ -8,6 +8,8 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { Loader2 } from 'lucide-react';
+import { TypingEffect } from './TypingEffect';
+import TypewriterComponent from 'typewriter-effect';
 
 export default function Home() {
     const [apiKey, setApiKey] = useState('sj-d42f54zdnmyoul9qcmvwugq7l986d2');
@@ -17,6 +19,8 @@ export default function Home() {
     const [generatedAudio, setGeneratedAudio] = useState('');
     const [requestLogs, setRequestLogs] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [key, setKey] = useState(0);
+
     const { toast } = useToast();
 
 
@@ -48,6 +52,7 @@ export default function Home() {
             const response = await generateText(input, apiKey);
             console.log(response, 'res')
             setGeneratedText(response.choices[0].message.content);
+            setKey((prevKey) => prevKey + 1);
             logRequest('Text Generation', 'Success');
             toast({ title: 'Text Generated', description: 'Text generation was successful.' });
         } catch {
@@ -124,7 +129,19 @@ export default function Home() {
                     <CardHeader>
                         <CardTitle>Generated Text</CardTitle>
                     </CardHeader>
-                    <CardContent className="whitespace-pre-wrap">{generatedText}</CardContent>
+                    <CardContent className="whitespace-pre-wrap">
+                        <TypewriterComponent
+                            key={key}
+                            options={{
+                                strings: generatedText,
+                                autoStart: true,
+                                loop: false,
+                                delay: 10, 
+                                cursor: '|',
+                            }}
+                        />
+                    </CardContent>
+
                 </Card>
             )}
             {generatedImage && (
