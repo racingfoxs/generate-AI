@@ -92,11 +92,11 @@ export default function Home() {
                             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                             Generate Text
                         </Button>
-                        <Button  className="w-full" onClick={handleGenerateImage} disabled={!apiKey || loading}>
+                        <Button className="w-full" onClick={handleGenerateImage} disabled={!apiKey || loading}>
                             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                             Generate Image
                         </Button>
-                        <Button  className="w-full" onClick={handleGenerateAudio} disabled={!apiKey || loading}>
+                        <Button className="w-full" onClick={handleGenerateAudio} disabled={!apiKey || loading}>
                             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                             Generate Audio
                         </Button>
@@ -132,8 +132,8 @@ export default function Home() {
                     </CardContent>
                 </Card>
             )}
-            
-            <Card>
+
+            <Card className="mb-6">
                 <CardHeader>
                     <CardTitle>Request Logs</CardTitle>
                 </CardHeader>
