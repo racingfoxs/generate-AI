@@ -182,6 +182,12 @@ export default function Home() {
                     )}
                 </CardContent>
             </Card>
+
+            <Card className="mb-6">
+                <CardHeader>
+                    <CardTitle>Version 1.0<span className="text-xs pl-2">Build From Scratch - D.Raj</span></CardTitle>
+                </CardHeader>
+            </Card>
             <Toaster position="top-right" />
         </div>
     );
