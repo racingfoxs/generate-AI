@@ -48,7 +48,6 @@ export default function Home() {
         try {
             setLoading(true);
             const response = await generateText(input, apiKey);
-            console.log(response, 'res')
             setGeneratedText(response.choices[0].message.content);
             logRequest('Text Generation', 'Success');
             toast({ title: 'Text Generated', description: 'Text generation was successful.' });
