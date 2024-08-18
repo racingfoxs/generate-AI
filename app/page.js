@@ -19,8 +19,6 @@ export default function Home() {
     const [generatedAudio, setGeneratedAudio] = useState('');
     const [requestLogs, setRequestLogs] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [key, setKey] = useState(0);
-
     const { toast } = useToast();
 
 
@@ -52,7 +50,6 @@ export default function Home() {
             const response = await generateText(input, apiKey);
             console.log(response, 'res')
             setGeneratedText(response.choices[0].message.content);
-            setKey((prevKey) => prevKey + 1);
             logRequest('Text Generation', 'Success');
             toast({ title: 'Text Generated', description: 'Text generation was successful.' });
         } catch {
@@ -65,19 +62,18 @@ export default function Home() {
 
     const handleGenerateImage = async () => {
         try {
-            setLoading(true);
-            const response = await generateImage(input, apiKey);
-            console.log(response, 'res')
-            setGeneratedImage(response.data[0].url);
-            logRequest('Image Generation', 'Success');
-            toast({ title: 'Image Generated', description: 'Image generation was successful.' });
+          setLoading(true);
+          const response = await generateImage(input, apiKey); 
+          setGeneratedImage(`/api/image-proxy?url=${encodeURIComponent(response.data[0].url)}`);
+          logRequest('Image Generation', 'Success');
+          toast({ title: 'Image Generated', description: 'Image generation was successful.' });
         } catch {
-            logRequest('Image Generation', 'Failed');
-            toast({ title: 'Error', description: 'Image generation failed.', variant: 'destructive' });
+          logRequest('Image Generation', 'Failed');
         } finally {
-            setLoading(false);
+          setLoading(false);
         }
-    };
+      };
+      
 
     const handleGenerateAudio = async () => {
         try {
