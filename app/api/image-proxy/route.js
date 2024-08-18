@@ -29,5 +29,4 @@ export async function GET(req) {
         return new Response('Internal Server Error', { status: 500 });
     }
 }
-
-export const dynamic = 'force-dynamic';
+export const dynamic = 'auto'
