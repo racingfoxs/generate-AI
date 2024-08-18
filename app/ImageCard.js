@@ -39,15 +39,19 @@ const ImageCard = ({ generatedImage }) => {
         </CardHeader>
         <CardContent>
           {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          {!loading && !isImageLoaded && (
+            <div className="text-red-500">Failed to load image, check console log.</div>
+          )}
           <Image
             src={generatedImage}
             alt="Generated"
             width={1024}
             height={1024}
-            className={`w-full ${!isImageLoaded ? 'hidden' : ''}`}
+            className={`w-full`}
             onLoad={handleImageLoad}
             onError={handleImageError}
             priority
+            quality={100}
           />
         </CardContent>
       </Card>
