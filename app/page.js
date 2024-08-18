@@ -9,7 +9,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { Loader2 } from 'lucide-react';
 import TypewriterComponent from 'typewriter-effect';
-import Image from 'next/image';
+import ImageCard from './ImageCard';
 
 export default function Home() {
     const [apiKey, setApiKey] = useState('sj-im3c6bcgui8665jvaap31ivizsbo2g');
@@ -146,14 +146,7 @@ export default function Home() {
                 </Card>
             )}
             {generatedImage && (
-                <Card className="mb-6">
-                    <CardHeader>
-                        <CardTitle>Generated Image</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <Image height={1024} width={1024} src={generatedImage} alt="Generated" className="w-full" />
-                    </CardContent>
-                </Card>
+                <ImageCard generatedImage={generatedImage}/>
             )}
             {generatedAudio && (
                 <Card className="mb-6">
