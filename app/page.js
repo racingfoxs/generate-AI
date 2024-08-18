@@ -137,7 +137,7 @@ export default function Home() {
                                 strings: generatedText,
                                 autoStart: true,
                                 loop: false,
-                                delay: 10, 
+                                delay: 10,
                                 cursor: '|',
                             }}
                         />
