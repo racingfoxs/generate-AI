@@ -118,7 +118,7 @@ export default function Home() {
                             Generate Image
                         </Button>
                         <Button className="w-full" onClick={handleGenerateAudio} disabled={!apiKey || loading || true}>
-                            {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                            {/* {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />} */}
                             Generate Audio <span className='text-[10px] pl-1'>(premium)</span>
                         </Button>
                     </div>
