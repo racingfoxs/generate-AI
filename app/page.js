@@ -11,7 +11,7 @@ import { Loader2 } from 'lucide-react';
 import TypewriterComponent from 'typewriter-effect';
 
 export default function Home() {
-    const [apiKey, setApiKey] = useState('sj-d42f54zdnmyoul9qcmvwugq7l986d2');
+    const [apiKey, setApiKey] = useState('sj-im3c6bcgui8665jvaap31ivizsbo2g');
     const [input, setInput] = useState('');
     const [generatedText, setGeneratedText] = useState('');
     const [generatedImage, setGeneratedImage] = useState('');
