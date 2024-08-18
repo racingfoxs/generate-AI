@@ -51,7 +51,7 @@ const ImageCard = ({ generatedImage }) => {
             onLoad={handleImageLoad}
             onError={handleImageError}
             priority
-            quality={100}
+            unoptimized
           />
         </CardContent>
       </Card>
