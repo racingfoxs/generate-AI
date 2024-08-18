@@ -9,6 +9,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { Loader2 } from 'lucide-react';
 import TypewriterComponent from 'typewriter-effect';
+import Image from 'next/image';
 
 export default function Home() {
     const [apiKey, setApiKey] = useState('sj-im3c6bcgui8665jvaap31ivizsbo2g');
@@ -66,6 +67,7 @@ export default function Home() {
         try {
             setLoading(true);
             const response = await generateImage(input, apiKey);
+            console.log(response, 'res')
             setGeneratedImage(response.data[0].url);
             logRequest('Image Generation', 'Success');
             toast({ title: 'Image Generated', description: 'Image generation was successful.' });
@@ -149,7 +151,7 @@ export default function Home() {
                         <CardTitle>Generated Image</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <img src={generatedImage} alt="Generated" className="w-full" />
+                        <Image height={1024} width={1024} src={generatedImage} alt="Generated" className="w-full" />
                     </CardContent>
                 </Card>
             )}
