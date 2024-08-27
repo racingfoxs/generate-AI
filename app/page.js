@@ -12,7 +12,7 @@ import TypewriterComponent from 'typewriter-effect';
 import ImageCard from './ImageCard';
 
 export default function Home() {
-    const [apiKey, setApiKey] = useState('sj-im3c6bcgui8665jvaap31ivizsbo2g');
+    const [apiKey, setApiKey] = useState('sj-pra5sc388oknwylt7pjmbt8f7ncqeo');
     const [input, setInput] = useState('');
     const [generatedText, setGeneratedText] = useState('');
     const [generatedImage, setGeneratedImage] = useState('');
